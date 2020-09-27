@@ -1,0 +1,49 @@
+
+Django: POST, PUT, GET, DELETE requests example | Rest Apis
+https://bezkoder.com/django-rest-api/
+github
+https://github.com/bezkoder/django-rest-api
+
+CREATE PROJECT
+----------------------------------------------------------------------------------
+■ Create a project folder
+C:\_study\Python\DjangoRestApi
+
+■ Create a virtual environment in which Django is installed
+C:\_study\Python\DjangoRestApi> python -m venv env
+
+■ Open in vscode
+code .
+
+■ Activate environment, Command palette: Select the Python
+Select Interpreter => .env\Scripts\python.exe
+
+■ Active Environment and Terminal: Create New Integrated 
+New Terminal => (env) ...
+
+■ Install Django in the virtual environment
+(env)> python -m pip install django
+
+■ Create a django project. i.g hello_django,
+(env) PS C:\_study\Python\DjangoRestApi> django-admin startproject DjangoRestApi .
+(end point char is important)
+
+■ Can run it fot test
+(env)> python manage.py runserver
+(rocket page)
+
+■ Create a django application
+(env)> python manage.py startapp tutorial
+----------------------------------------------------------------------------------
+
+■ Install Django REST framework
+(env)> pip install djangorestframework
+(env)> pip install django-cors-headers
+
+always prompt for
+python -m pip install --upgrade pip
+
+
+FIX 
+This did not recognize Tutorial class  as an object
+I found this useful, clicked CMD + SHIFT + P and searched Python: Select Linter and just select flake8! –

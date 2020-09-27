@@ -1,0 +1,133 @@
+This is a laboratory project.
+
+Git y Github | Curso Práctico de Git y Github Desde Cero
+https://www.youtube.com/watch?v=HiXLkL42tMU
+https://www.youtube.com/watch?v=AYbgqmyg7dk
+
+echo "# LABS-django" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M master
+git remote add origin https://github.com/harveytriana/LABS-django.git
+git push -u origin master
+
+Advance your journey, Official documentation
+https://lab.github.com/
+
+Django Tutorial in Visual Studio Code
+https://code.visualstudio.com/docs/python/tutorial-django
+
+
+is django installed
+> python
+>>> import django
+>>> django.VERSION
+(3, 1, 1, 'final', 0)
+>>>
+
+Official site
+http://www.djangoproject.com
+Global installed (local)
+> pip install Django==3.1.1
+
+nice, teacher (but templates)
+https://www.youtube.com/watch?v=2DbWqyBR4Oo
+
+In DJ, MTV MODEL TEMPLATE VIEW
+view is the comtroler
+
+super user
+=================
+admin | Pragma$2020
+
+sqlite | admin | admin123
+postgreeSql | admin | Pragma$2020
+
+guest
+=====
+guest | something123
+
+Escuala: https://youtu.be/9MBsaWe0SN4
+
+Entry point: http://127.0.0.1:5000/admin/
+
+TEMPLATES
+=========
+https://bit.ly/3kzg2ia
+
+Inheritance of... (sipped)
+{% extends \MockUp/layout.html\ %},
+{% block title %},
+
+{% endblock %},
+
+{% block content %},
+
+{% endblock %}
+
+MODELS
+======
+shorturl.at/rwDJ6
+
+
+** TIP Cut line: Shift+Delete
+
+postgreeSql
+===========
+Pragma$2020
+port 543
+Master Password: the same
+
+tutorial
+https://www.youtube.com/watch?v=jMPTz5NWIPY
+
+pip install psycopg2
+
+Maganmet Toos for PostgreeSql
+=============================
+pgAdmin
+http://127.0.0.1:51893/browser/
+http://127.0.0.1:51893/browser/
+
+prunicias
+<piyiadmin>
+<postgreskiuel>
+
+Connect to progreeSql
+---------------------
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'labs',
+        'USER': 'postgres',
+        'PASSWORD': 'Pragma$2020',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+PYTHON
+https://youtu.be/G2FCfQj-9ig?list=PLU8oAlHdN5BlvPxziopYZRd55pdqFwkeS
+DJANGO
+https://youtu.be/7XO1AzwkPPE?list=PLU8oAlHdN5BmfvwxFO7HdPciOCmmYneAB
+GIT
+https://youtu.be/HiXLkL42tMU
+
+REST YT
+-------
+https://youtu.be/2ntdfVTdt_g
+19:40s
+
+Django REST framework
+---------------------
+https://www.django-rest-framework.org/tutorial/quickstart/
+
+Django: POST, PUT, GET, DELETE requests example | Rest Apis
+https://bezkoder.com/django-rest-api/
+
+Official 
+https://www.django-rest-framework.org/tutorial/quickstart/
+
+#API View (another approach) 
+https://www.youtube.com/watch?v=Z8ADAr9KZYc
