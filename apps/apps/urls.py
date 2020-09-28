@@ -20,7 +20,7 @@ from Books.views import *
 from quickstart.views import *
 
 router = DefaultRouter()
-router.register(r'Books', BookViewSet)
+router.register(r'Books', BookViewSet, basename='book')
 router.register(r'Authors', AuthorViewSet)
 #
 router.register(r'users', UserViewSet)
@@ -34,6 +34,9 @@ router.register(r'groups', GroupViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    # for APIView
     path('api/', include('quickstart.urls')),
+    path('api/', include('Books.urls')),
+    # auth
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
