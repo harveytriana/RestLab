@@ -3,24 +3,24 @@ from django.db import models
 
 # Author
 class Author(models.Model):
-    FirstName = models.CharField(max_length=50)
-    LastName = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
 
-    def FullName(self):
-        return self.FirstName + ' ' + self.LastName
+    def full_name(self):
+        return self.first_name + ' ' + self.last_name
 
     def __str__(self):
-        return self.FullName()
+        return self.full_name()
 
 # Book
 class Book(models.Model):
-    Title = models.CharField(max_length=500)
-    Date = models.DateField()
+    title = models.CharField(max_length=500)
+    published_date = models.DateField()
     # relation
-    Author = models.ForeignKey(
+    author = models.ForeignKey(
         Author, null=False, blank=False, on_delete=models.CASCADE)
 
     def __str__(self):
         # self.Alumno = self.Alumno.NombreCompleto, due to __str__
-        return '{0} => {1}'.format(self.Title, self.Author)
+        return '{0} => {1}'.format(self.title, self.author)
 

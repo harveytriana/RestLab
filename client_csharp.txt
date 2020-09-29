@@ -1,0 +1,102 @@
+// =========================================
+// Encapsulates and simplifies the REST code
+// =========================================
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Text;
+ 
+public sealed class RestClient: IDisposable
+{
+    readonly HttpClient httpClient;
+
+    public RestClient(string apiRoute)
+    {
+        httpClient = new HttpClient()
+        {
+            BaseAddress = new Uri(apiRoute)
+        };
+        httpClient.DefaultRequestHeaders.Accept.Clear();
+        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    }
+
+    public async Task<List<T>> GetAll<T>(string route)
+    {
+        try {
+            var json = await httpClient.GetStringAsync(route);
+
+            return JsonConvert.DeserializeObject<List<T>>(json);
+        }
+        catch (Exception exception) {
+            Console.WriteLine($"ERROR. GetAll(): {exception.Message}");
+        }
+        return null;
+    }
+
+    public void Dispose()
+    {
+        httpClient.Dispose();
+    }
+}
+
+// SAMPLE
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Django REST API");
+
+        var rc = new RestClient("http://127.0.0.1:5004");
+
+        Console.WriteLine("\nBOOKS");
+        var books = rc.GetAll<Book>("/Books").Result;
+        if (books != null)
+            foreach (var book in books)
+                Console.WriteLine($"{book}, {book.Date:dd-MM-yyyy}");
+        else Console.WriteLine("Books is null");
+
+        Console.WriteLine("\nAUTHORS");
+        var authors = rc.GetAll<Author>("/Authors").Result;
+        if (authors != null)
+            foreach (var author in authors)
+                Console.WriteLine($"{author.Id}: {author}");
+        else Console.WriteLine("Authors is null");
+
+        Console.WriteLine("\nBook Titles");
+        var list = rc.GetAll<string>("/api/booktitles").Result;
+        if (list != null)
+            foreach (var s in list)
+                Console.WriteLine(s);
+        else Console.WriteLine("Authors is null");
+    }
+}
+
+// MODEL
+public partial class Book
+{
+    public long Id { get; set; }
+    public string Title { get; set; }
+    public DateTime Date { get; set; }
+
+    // ForeignKey
+    //public long AuthorId { get; set; }
+    //public virtual Author Author { get; set; }
+    public int Author { get; set; }
+
+    public override string ToString() => $"{Title}, {Author}";
+}
+
+public partial class Author
+{
+    public long Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    
+    // disbled to match REST results
+    // public virtual ICollection<Book> Books { get; set; }
+
+    public override string ToString() => $"{FirstName} {LastName}";
+}
